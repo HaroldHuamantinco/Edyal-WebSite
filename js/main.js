@@ -1,4 +1,32 @@
 // =====================
+// HEADER
+// =====================
+fetch('components/header.html')
+    .then(res => res.text())
+    .then(html => {
+        document.getElementById('header-placeholder').innerHTML = html;
+
+        const header = document.querySelector('.header-container');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        const hamburger = document.querySelector('.hamburger-btn');
+        const navMenu = document.querySelector('.nav-menu');
+        const overlay = document.querySelector('.menu-overlay');
+        const closeBtn = document.querySelector('.close-btn');
+
+        const toggleMenu = (open) => {
+            navMenu.classList.toggle('open', open);
+            overlay.classList.toggle('active', open);
+        };
+
+        hamburger.addEventListener('click', () => toggleMenu(!navMenu.classList.contains('open')));
+        closeBtn.addEventListener('click', () => toggleMenu(false));
+        overlay.addEventListener('click', () => toggleMenu(false));
+    });
+
+// =====================
 // CARRUSEL
 // =====================
 const track = document.querySelector('.productos-track');
@@ -47,7 +75,6 @@ if (form) {
             correo:    form.correo.value,
         };
 
-        // Enviar a Google Sheets
         const SHEET_URL = 'https://script.google.com/macros/s/AKfycbx9AB-gRAsyAR90ZMGmoDHLws4Gn-0Dt9F64el4pcLFkeOx95WWVzngGNtCrpTwZBtu/exec';
         try {
             await fetch(SHEET_URL, {
@@ -58,7 +85,6 @@ if (form) {
             console.error('Error al enviar a Sheets:', err);
         }
 
-        // Enviar a WhatsApp
         const mensaje =
             `Nuevo registro Comunidad Edyal:%0A` +
             `Nombre: ${datos.nombre} ${datos.apellidos}%0A` +
