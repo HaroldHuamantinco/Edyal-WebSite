@@ -1,0 +1,112 @@
+/* =====================
+   FUENTES
+===================== */
+@font-face { font-family: "Archivo"; src: url("../assets/fonts/Archivo-Thin.ttf"); font-weight: 100; }
+@font-face { font-family: "Archivo"; src: url("../assets/fonts/Archivo-ThinItalic.ttf"); font-weight: 100; font-style: italic; }
+@font-face { font-family: "Archivo"; src: url("../assets/fonts/Archivo-ExtraLight.ttf"); font-weight: 200; }
+@font-face { font-family: "Archivo"; src: url("../assets/fonts/Archivo-ExtraLightItalic.ttf"); font-weight: 200; font-style: italic; }
+@font-face { font-family: "Archivo"; src: url("../assets/fonts/Archivo-Light.ttf"); font-weight: 300; }
+@font-face { font-family: "Archivo"; src: url("../assets/fonts/Archivo-LightItalic.ttf"); font-weight: 300; font-style: italic; }
+@font-face { font-family: "Archivo"; src: url("../assets/fonts/Archivo-Regular.ttf"); font-weight: 400; }
+@font-face { font-family: "Archivo"; src: url("../assets/fonts/Archivo-Italic.ttf"); font-weight: 400; font-style: italic; }
+@font-face { font-family: "Archivo"; src: url("../assets/fonts/Archivo-Medium.ttf"); font-weight: 500; }
+@font-face { font-family: "Archivo"; src: url("../assets/fonts/Archivo-MediumItalic.ttf"); font-weight: 500; font-style: italic; }
+@font-face { font-family: "Archivo"; src: url("../assets/fonts/Archivo-SemiBold.ttf"); font-weight: 600; }
+@font-face { font-family: "Archivo"; src: url("../assets/fonts/Archivo-SemiBoldItalic.ttf"); font-weight: 600; font-style: italic; }
+@font-face { font-family: "Archivo"; src: url("../assets/fonts/Archivo-Bold.ttf"); font-weight: 700; }
+@font-face { font-family: "Archivo"; src: url("../assets/fonts/Archivo-BoldItalic.ttf"); font-weight: 700; font-style: italic; }
+@font-face { font-family: "Archivo"; src: url("../assets/fonts/Archivo-ExtraBold.ttf"); font-weight: 800; }
+@font-face { font-family: "Archivo"; src: url("../assets/fonts/Archivo-ExtraBoldItalic.ttf"); font-weight: 800; font-style: italic; }
+@font-face { font-family: "Archivo"; src: url("../assets/fonts/Archivo-Black.ttf"); font-weight: 900; }
+@font-face { font-family: "Archivo"; src: url("../assets/fonts/Archivo-Condensed-Black.ttf"); font-weight: 900; font-style: italic; }
+
+/* =====================
+   VARIABLES
+===================== */
+:root {
+    /* Colores primarios */
+    --color-purple-dark:  #32246F;
+    --color-purple:       #6447DD;
+
+    /* Colores secundarios */
+    --color-blue-dark:    #223B86;
+    --color-blue:         #234DF1;
+    --color-cyan:         #00E7FF;
+
+    /* Neutros */
+    --color-dark:         #333333;
+    --color-gray:         #7D7A89;
+    --color-white:        #FFFFFF;
+
+    /* Tipografía */
+    --font-base:          "Archivo", sans-serif;
+
+    /* Tamaños de fuente */
+    --text-sm:            12px;
+    --text-md:            14px;
+    --text-base:          16px;
+    --text-lg:            20px;
+    --text-xl:            24px;
+    --text-2xl:           32px;
+    --text-3xl:           48px;
+
+    /* Espaciado */
+    --space-xs:           0.5rem;
+    --space-sm:           1rem;
+    --space-md:           1.5rem;
+    --space-lg:           2rem;
+    --space-xl:           3rem;
+    --space-xxl:           4rem;
+
+    /* Bordes */
+    --radius-sm:          8px;
+    --radius-md:          15px;
+    --radius-lg:          100px;
+
+    /* Transiciones */
+    --transition:         all 0.3s ease;
+}
+
+/* =====================
+   RESET
+===================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* =====================
+   BASE
+===================== */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-base);
+    font-size: var(--text-base);
+    color: var(--color-dark);
+    background-color: var(--color-white);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: var(--font-base);
+}
