@@ -1,43 +1,15 @@
-// Cargar header
-fetch('/components/header.html')
-    .then(res => res.text())
-    .then(html => {
-        document.getElementById('header-placeholder').innerHTML = html;
-
-        // Scroll
-        const header = document.querySelector('.header-container');
-        window.addEventListener('scroll', () => {
-            header.classList.toggle('scrolled', window.scrollY > 50);
-        });
-
-        // Menú hamburguesa
-        const hamburger = document.querySelector('.hamburger-btn');
-        const navMenu = document.querySelector('.nav-menu');
-        const overlay = document.querySelector('.menu-overlay');
-        const closeBtn = document.querySelector('.close-btn');
-
-        const toggleMenu = (open) => {
-            navMenu.classList.toggle('open', open);
-            overlay.classList.toggle('active', open);
-        };
-
-        hamburger.addEventListener('click', () => toggleMenu(!navMenu.classList.contains('open')));
-        closeBtn.addEventListener('click', () => toggleMenu(false));
-        overlay.addEventListener('click', () => toggleMenu(false));
-    });
-
-    const track = document.querySelector('.productos-track');
+// =====================
+// CARRUSEL
+// =====================
+const track = document.querySelector('.productos-track');
 
 if (track) {
     const cards = Array.from(track.children);
     const gap = 24;
     let index = 0;
-    let isMobile = window.innerWidth <= 768;
+    const isMobile = window.innerWidth <= 768;
 
-    // Clona tarjetas para efecto infinito
-    cards.forEach(card => {
-        track.appendChild(card.cloneNode(true));
-    });
+    cards.forEach(card => track.appendChild(card.cloneNode(true)));
 
     const cardWidth = () => cards[0].offsetWidth + gap;
 
@@ -58,26 +30,43 @@ if (track) {
     setInterval(avanzar, isMobile ? 2000 : 1500);
 }
 
+// =====================
+// FORMULARIO
+// =====================
 const form = document.getElementById('comunidad-form');
 
-form.addEventListener('submit', async (e) => {
-    e.preventDefault();
+if (form) {
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
 
-    const datos = {
-        nombre: form.nombre.value,
-        apellidos: form.apellidos.value,
-        celular: form.celular.value,
-        distrito: form.distrito.value,
-        correo: form.correo.value,
-    };
+        const datos = {
+            nombre:    form.nombre.value,
+            apellidos: form.apellidos.value,
+            celular:   form.celular.value,
+            distrito:  form.distrito.value,
+            correo:    form.correo.value,
+        };
 
-    // Enviar a WhatsApp
-    const mensaje = `Nuevo registro Comunidad Edyal:%0ANombre: ${datos.nombre} ${datos.apellidos}%0ACelular: ${datos.celular}%0ADistrito: ${datos.distrito}%0ACorreo: ${datos.correo}`;
-    window.open(`https://wa.me/51XXXXXXXXX?text=${mensaje}`, '_blank');
+        // Enviar a Google Sheets
+        const SHEET_URL = 'TU_URL_APPS_SCRIPT_AQUI';
+        try {
+            await fetch(SHEET_URL, {
+                method: 'POST',
+                body: JSON.stringify(datos),
+            });
+        } catch (err) {
+            console.error('Error al enviar a Sheets:', err);
+        }
 
-    // Enviar a Google Sheets (reemplaza la URL cuando tengas tu Apps Script)
-    // const SHEET_URL = 'https://script.google.com/macros/s/TU_URL_AQUI/exec';
-    // await fetch(SHEET_URL, { method: 'POST', body: JSON.stringify(datos) });
+        // Enviar a WhatsApp
+        const mensaje =
+            `Nuevo registro Comunidad Edyal:%0A` +
+            `Nombre: ${datos.nombre} ${datos.apellidos}%0A` +
+            `Celular: ${datos.celular}%0A` +
+            `Distrito: ${datos.distrito}%0A` +
+            `Correo: ${datos.correo}`;
+        window.open(`https://wa.me/51997575885?text=${mensaje}`, '_blank');
 
-    form.reset();
-});
+        form.reset();
+    });
+}
