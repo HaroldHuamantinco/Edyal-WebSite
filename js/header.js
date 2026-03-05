@@ -48,7 +48,7 @@ if (form) {
         };
 
         // Enviar a Google Sheets
-        const SHEET_URL = 'TU_URL_APPS_SCRIPT_AQUI';
+        const SHEET_URL = 'https://script.google.com/macros/s/AKfycbx9AB-gRAsyAR90ZMGmoDHLws4Gn-0Dt9F64el4pcLFkeOx95WWVzngGNtCrpTwZBtu/exec';
         try {
             await fetch(SHEET_URL, {
                 method: 'POST',
