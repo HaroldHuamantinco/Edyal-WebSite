@@ -61,7 +61,6 @@
     font-size: var(--text-md);
     font-weight: 600;
     transition: var(--transition);
-    white-space: nowrap;
 }
 
 .hero-btn:hover,
@@ -172,7 +171,6 @@
     font-size: var(--text-md);
     font-weight: 600;
     transition: var(--transition);
-    white-space: nowrap;
 }
 
 .beneficios-img-container {
@@ -278,7 +276,6 @@
     text-align: center;
     transition: var(--transition);
     margin-top: var(--space-xs);
-    white-space: nowrap;
 }
 
 /* =====================
@@ -344,7 +341,6 @@
     font-size: var(--text-md);
     font-weight: 600;
     transition: var(--transition);
-    white-space: nowrap;
 }
 
 .aliado-btn:hover {
@@ -398,7 +394,6 @@
     font-size: var(--text-md);
     font-weight: 600;
     transition: var(--transition);
-    white-space: nowrap;
 }
 
 .cobertura-btn:hover {
@@ -548,7 +543,6 @@
     cursor: pointer;
     transition: var(--transition);
     margin-top: var(--space-xs);
-    white-space: nowrap;
 }
 
 .form-btn:hover {
@@ -682,5 +676,17 @@
 .banner-title {
     font-size: var(--text-2xl);
 }
+
+.hero-btn,
+    .btn-2,
+    .producto-btn,
+    .aliado-btn,
+    .cobertura-btn,
+    .form-btn {
+        white-space: normal;
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+    }
 
 }
