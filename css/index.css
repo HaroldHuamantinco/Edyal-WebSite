@@ -685,8 +685,6 @@
         font-size: var(--text-sm);
         padding: 1.2em, 1.5em;
         white-space: nowrap;
-        text-align: center;
-        width: 300px;
     }
 
     .form-btn {
